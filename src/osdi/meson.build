@@ -18,6 +18,5 @@ libosdi = static_library(
 	'osdi',
 	libosdi_srcs,
 	include_directories: [ root_inc ],
-	dependencies: [ dl_dep ],
 	install: false,
 )

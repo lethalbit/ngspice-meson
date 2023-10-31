@@ -69,17 +69,17 @@ option(
 )
 
 option(
-	'with-tcl',
-	type: 'boolean',
-	value: false,
-	description: 'Compiles the tcl module instead,  experimental, see README.tcl'
-)
-
-option(
 	'enable-ngshared',
 	type: 'boolean',
 	value: false,
 	description: 'Compiles ngspice as shared library'
+)
+
+option(
+	'with-tcl',
+	type: 'boolean',
+	value: false,
+	description: 'Compiles the tcl module instead,  experimental, see README.tcl'
 )
 
 option(
@@ -98,6 +98,147 @@ option(
 
 
 option(
+	'enable-ansi',
+	type: 'boolean',
+	value: false,
+	description: 'Force --ansi option for compilation'
+)
+
+option(
+	'enable-gprof',
+	type: 'boolean',
+	value: false,
+	description: 'roduce gprof profiling data in \'gmon.out\' (GCC only).'
+)
+
+option(
+	'enable-nobypass',
+	type: 'boolean',
+	value: false,
+	description: 'Don\'t bypass recalculations of slowly changing variables'
+)
+
+option(
+	'enable-capbypass',
+	type: 'boolean',
+	value: false,
+	description: 'Bypass calculation of cbd/cbs in the mosfets if the vbs/vbd voltages are unchanged'
+)
+
+option(
+	'enable-nodelimiting',
+	type: 'boolean',
+	value: false,
+	description: 'Experimental damping scheme.'
+)
+
+option(
+	'enable-predictor',
+	type: 'boolean',
+	value: false,
+	description: 'Enable a predictor method for convergence.'
+)
+
+option(
+	'enable-newpred',
+	type: 'boolean',
+	value: false,
+	description: 'Enable NEWPRED whatever it is(?)'
+)
+
+option(
+	'enable-newtrunc',
+	type: 'boolean',
+	value: false,
+	description: 'Enable, how we want extrapolate capacitances.'
+)
+
+option(
+	'enable-sense2',
+	type: 'boolean',
+	value: false,
+	description: 'Use spice2 sensitivity analysis.'
+)
+
+option(
+	'enable-ftedebug',
+	type: 'boolean',
+	value: false,
+	description: 'Enable ngspice frontend debug'
+)
+
+option(
+	'enable-cpdebug',
+	type: 'boolean',
+	value: false,
+	description: 'Enable ngspice shell debug'
+)
+
+option(
+	'enable-sensdebug',
+	type: 'boolean',
+	value: false,
+	description: 'Debug sensitivity code *SENSDEBUG*'
+)
+
+option(
+	'enable-asdebug',
+	type: 'boolean',
+	value: false,
+	description: 'Debug sensitivity code *ASDEBUG*'
+)
+
+option(
+	'enable-stepdebug',
+	type: 'boolean',
+	value: false,
+	description: 'Unknown debug option'
+)
+
+option(
+	'enable-pzdebug',
+	type: 'boolean',
+	value: false,
+	description: 'Debug pole/zero code'
+)
+
+option(
+	'enable-blktmsdebug',
+	type: 'boolean',
+	value: false,
+	description: 'Debug distortion code *BLOCKTIMES*'
+)
+
+
+option(
+	'enable-smltmsdebug',
+	type: 'boolean',
+	value: false,
+	description: 'Debug distortion code *SMALLTIMES*'
+)
+
+option(
+	'enable-smoketest',
+	type: 'boolean',
+	value: false,
+	description: 'Enable smoketest compile'
+)
+
+option(
+	'enable-experimental',
+	type: 'boolean',
+	value: false,
+	description: 'Enable some experimental code'
+)
+
+option(
+	'enable-expdevices',
+	type: 'boolean',
+	value: false,
+	description: 'Enable experimental devices (they do not compile)'
+)
+
+option(
 	'enable-ndev',
 	type: 'boolean',
 	value: false,
@@ -109,4 +250,26 @@ option(
 	type: 'boolean',
 	value: false,
 	description: 'Enable cluster support, (experimental)'
+)
+
+option(
+	'enable-help',
+	type: 'boolean',
+	value: false,
+	description: 'Force building nghelp (deprecated)'
+)
+
+option(
+	'with-fftw3',
+	type: 'boolean',
+	value: true,
+	description: 'Use fftw3 for Fourier transforms. Default=true.'
+)
+
+
+option(
+	'enable-openmp',
+	type: 'boolean',
+	value: false,
+	description: 'Use OpenMP parallel processing'
 )
