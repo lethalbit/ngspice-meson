@@ -182,18 +182,17 @@ if enable_ngshared
 			'-DSIMULATOR',
 			'-DSHAREDSPICE_version=@0@'.format(meson.project_version())
 		],
-		dependencies: [
-			threads, fftw3, dl_dep, omp
+		link_args: [
+			'-lstdc++'
 		],
+		dependencies: [ deps ],
 		include_directories: [
 			root_inc, frontend_inc, spicelib_devs_inc
 		]
 	)
 
 	ngspice_dep = declare_dependency(
-		dependencies: [
-			threads, fftw3, dl_dep
-		],
+		dependencies: [ deps ],
 		link_with: libngspice,
 		version: meson.project_version(),
 		include_directories: [
@@ -300,10 +299,11 @@ else
 		c_args: [
 			'-DSIMULATOR'
 		],
-
-		dependencies: [
-			threads, fftw3, dl_dep, omp
+		link_args: [
+			'-lstdc++'
 		],
+
+		dependencies: [ deps ],
 		include_directories: [
 			root_inc, frontend_inc, spicelib_devs_inc
 		]
