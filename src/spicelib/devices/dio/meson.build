@@ -1,0 +1,37 @@
+
+libdio_srcs = files([
+	'dio.c',
+	'dioacld.c',
+	'dioask.c',
+	'dioconv.c',
+	'diodefs.h',
+	'diodisto.c',
+	'diodset.c',
+	'dioext.h',
+	'diogetic.c',
+	'dioinit.c',
+	'dioinit.h',
+	'dioitf.h',
+	'dioload.c',
+	'diomask.c',
+	'diompar.c',
+	'dionoise.c',
+	'dioparam.c',
+	'diopzld.c',
+	'diosacl.c',
+	'diosetup.c',
+	'diosload.c',
+	'diosoachk.c',
+	'diosprt.c',
+	'diosset.c',
+	'diosupd.c',
+	'diotemp.c',
+	'diotrunc.c',
+])
+
+libdio = static_library(
+	'dio',
+	libdio_srcs,
+	include_directories: [ root_inc ],
+	install: false,
+)
