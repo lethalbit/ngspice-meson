@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> This is only a rough enough port from autoconf to meson to get the ngspice
+> shared library to build on Linux, YMMV for any other use!
+
+> [!WARNING]
+> Currently the meson translation is quite rough, it's not quite a 1:1 from the
+> autoconf, so things may be wonky, and not done right, and the resulting builds
+> might not work at all. Not all flags are hooked up to the build, etc.
+
 README for NGSPICE
 ==================
 
@@ -11,7 +20,7 @@ standard for simulating circuits.
 
 Cider couples Spice3f5 circuit level simulator to a device simulator
 to provide greater simulation accuracy of critical devices. So you may
-create device models for diodes, bipolar, JFet and MOSFETs derived 
+create device models for diodes, bipolar, JFet and MOSFETs derived
 from their cross-sectional structures and materials.
 
 Xspice is an extension to Spice3C1 that provides code modelling support

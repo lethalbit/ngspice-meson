@@ -1,0 +1,112 @@
+option(
+	'enable-oldapps',
+	type: 'boolean',
+	value: false,
+	description: 'Enable making old, outdated apps.'
+)
+
+option(
+	'enable-xspice',
+	type: 'boolean',
+	value: false,
+	description: 'Enable XSPICE enhancements'
+)
+
+option(
+	'enable-osdi',
+	type: 'boolean',
+	value: false,
+	description: 'Enable OSDI integration'
+)
+
+option(
+	'enable-cider',
+	type: 'boolean',
+	value: false,
+	description: 'Enable CIDER enhancements'
+)
+
+option(
+	'enable-adms',
+	type: 'boolean',
+	value: false,
+	description: 'Enable ADMS code models, (experimental)'
+)
+
+option(
+	'enable-pss',
+	type: 'boolean',
+	value: false,
+	description: 'Enable PSS Analysis, (experimental)'
+)
+
+option(
+	'disable-sp',
+	type: 'boolean',
+	value: false,
+	description: 'Disable S parameter Analysis'
+)
+
+option(
+	'enable-relpath',
+	type: 'boolean',
+	value: false,
+	description: 'Enable relative paths for spinit etc.'
+)
+
+option(
+	'with-readline',
+	type: 'boolean',
+	value: false,
+	description: 'Enable GNU readline support for CLI.'
+)
+
+option(
+	'with-editline',
+	type: 'boolean',
+	value: false,
+	description: 'Enable BSD editline support for CLI.'
+)
+
+option(
+	'with-tcl',
+	type: 'boolean',
+	value: false,
+	description: 'Compiles the tcl module instead,  experimental, see README.tcl'
+)
+
+option(
+	'enable-ngshared',
+	type: 'boolean',
+	value: false,
+	description: 'Compiles ngspice as shared library'
+)
+
+option(
+	'disable-utf8',
+	type: 'boolean',
+	value: false,
+	description: 'Don\'t use utf-8 or tchar (default is UNICODE support with utf-8)'
+)
+
+option(
+	'enable-shortcheck',
+	type: 'boolean',
+	value: false,
+	description: 'CMC QA check only for BSIM4/4'
+)
+
+
+option(
+	'enable-ndev',
+	type: 'boolean',
+	value: false,
+	description: 'Enable NDEV interface (experimental)'
+)
+
+option(
+	'enable-cluster',
+	type: 'boolean',
+	value: false,
+	description: 'Enable cluster support, (experimental)'
+)

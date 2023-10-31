@@ -1,0 +1,35 @@
+
+libhisimhv1_srcs = files([
+	'hsmhv.c',
+	'hsmhvacld.c',
+	'hsmhvask.c',
+	'hsmhvcvtest.c',
+	'hsmhvdef.h',
+	'hsmhveval.c',
+	'hsmhveval_qover.h',
+	'hsmhvevalenv.h',
+	'hsmhvext.h',
+	'hsmhvgetic.c',
+	'hsmhvinit.c',
+	'hsmhvinit.h',
+	'hsmhvitf.h',
+	'hsmhvld.c',
+	'hsmhvld_info_eval.h',
+	'hsmhvmask.c',
+	'hsmhvmpar.c',
+	'hsmhvnoi.c',
+	'hsmhvpar.c',
+	'hsmhvpzld.c',
+	'hsmhvset.c',
+	'hsmhvsoachk.c',
+	'hsmhvtemp.c',
+	'hsmhvtemp_eval.h',
+	'hsmhvtrunc.c',
+])
+
+libhisimhv1 = static_library(
+	'hisimhv1',
+	libhisimhv1_srcs,
+	include_directories: [ root_inc ],
+	install: false,
+)
