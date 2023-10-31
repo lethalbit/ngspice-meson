@@ -96,14 +96,6 @@ if enable_openmp
 	deps += dependency('openmp',  required: true)
 endif
 
-if with_editline
-	deps += dependency('editline',  required: true)
-endif
-
-if with_editline
-	deps += dependency('readline',  required: true)
-endif
-
 if enable_smoketest
 	extra_cflags += [
 		'-pedantic',
@@ -129,6 +121,10 @@ add_project_arguments(
 	cc.get_supported_arguments(extra_cflags),
 	language: 'c'
 )
+
+add_project_arguments('-D_DEFAULT_SOURCE', language: 'c')
+add_project_arguments('-D_DEFAULT_SOURCE', language: 'cpp')
+
 
 flex_gen = generator(
 	flex,
@@ -185,6 +181,17 @@ if date.found()
 	conf.set_quoted('NGSPICEBUILDDATE', datetime)
 else
 	conf.set_quoted('NGSPICEBUILDDATE', '')
+endif
+
+if with_editline
+	deps += dependency('editline',  required: true)
+	conf.set('HAVE_BSDEDITLINE', 1)
+	conf.set('HAVE_EDITLINE_READLINE_H', cc.check_header('editline/readline.h'))
+elif with_editline
+	deps += dependency('readline',  required: true)
+	conf.set('HAVE_GNUREADLINE', 1)
+	conf.set('HAVE_READLINE_HISTORY_H ', cc.check_header('readline/history.h'))
+	conf.set('HAVE_READLINE_READLINE_H ', cc.check_header('readline/readline.h'))
 endif
 
 
@@ -258,6 +265,9 @@ needed_headers = {
 	'sys/time.h': [
 		'gettimeofday', 'utimes'
 	],
+	'sys/times.h': [
+		'times'
+	],
 	'fcntl.h': [],
 	'fftw3.h': [],
 	'float.h': [],
@@ -265,7 +275,7 @@ needed_headers = {
 		'getopt_long'
 	],
 	'sys/resource.h': [
-		'getrlimit',
+		'getrlimit', 'getrusage',
 	],
 	'ieeefp.h': [],
 	'inttypes.h': [],
@@ -323,7 +333,7 @@ foreach hdr, fncs : needed_headers
 			hdr.replace('.','_').replace('/', '_').to_upper()
 		), 1)
 		foreach fnc : fncs
-			if cc.has_function(fnc)
+			if cc.has_header_symbol(hdr, fnc, args: [ '-D_DEFAULT_SOURCE' ])
 				conf.set('HAVE_@0@'.format(
 					fnc.to_upper()
 				), 1)
@@ -336,10 +346,17 @@ has_termios = cc.check_header('termios.h')
 if not has_termios
 	has_termio  = cc.check_header('termio.h')
 	conf.set('HAVE_TERMIO_H', 1)
+	foreach fnc : [ 'tcgetattr', 'tcsetattr', 'tdestroy' ]
+		if cc.has_header_symbol('termio.h', fnc, args: [ '-D_DEFAULT_SOURCE' ])
+			conf.set('HAVE_@0@'.format(
+				fnc.to_upper()
+			), 1)
+		endif
+	endforeach
 else
 	conf.set('HAVE_TERMIOS_H', 1)
 	foreach fnc : [ 'tcgetattr', 'tcsetattr', 'tdestroy' ]
-		if cc.has_function(fnc)
+		if cc.has_header_symbol('termios.h', fnc, args: [ '-D_DEFAULT_SOURCE' ])
 			conf.set('HAVE_@0@'.format(
 				fnc.to_upper()
 			), 1)
