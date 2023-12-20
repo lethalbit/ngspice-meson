@@ -83,8 +83,10 @@ extra_cflags = [
 flex  = find_program('flex', required: true)
 bison = find_program('bison', required: true)
 
+threads = dependency('threads', required: true)
+
 deps = [
-	dependency('threads', required: true),
+	threads,
 	cc.find_library('dl', required : true)
 ]
 
@@ -166,6 +168,8 @@ endif
 
 conf.set('SHARED_MODULE', enable_ngshared)
 conf.set('X_DISPLAY_MISSING', 1)
+
+conf.set('HAVE_LIBPTHREAD', threads.found())
 
 if enable_relpath
 	conf.set_quoted('NGSPICEBINDIR', '../bin')
@@ -365,17 +369,18 @@ else
 endif
 
 needed_libs = [
-	'libm',
-	'libpthread',
+	'm',
 ]
 
 foreach lib : needed_libs
 	if cc.find_library(lib).found()
-		conf.set('HAVE_@0@'.format(
+		conf.set('HAVE_LIB@0@'.format(
 			lib.to_upper()
 		), 1)
 	endif
 endforeach
+
+
 
 
 subdir('src')
