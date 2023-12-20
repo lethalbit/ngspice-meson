@@ -8,6 +8,7 @@ libosdi_srcs = files([
 	'osdiacld.c',
 	'osdiparam.c',
 	'osdiregistry.c',
+	'osdinoise.c',
 	'osdisetup.c',
 	'osditrunc.c',
 	'osdipzld.c',
