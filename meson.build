@@ -8,7 +8,7 @@ project(
 		'warning_level=3',
 		'b_ndebug=if-release',
 	],
-	version: '41',
+	version: '42',
 	meson_version: '>=1',
 )
 
